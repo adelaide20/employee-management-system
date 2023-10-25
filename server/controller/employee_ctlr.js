@@ -1,13 +1,16 @@
-const pool = require('server/config/db.config.js');
+const pool = require('../config/db.config.js');
 
 
-exports.createUser = (request, response) => {
-    const { name, email } = request.body
+exports.newEmployee = (request, response) => {
+    const {first_name ,last_name,email,contactNo} = request.body
   
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email], (error, results) => {
+    pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo) 
+    VALUES ($1, $2, $3, $4) RETURNING *`,
+     [first_name, last_name, email, contactNo], 
+     (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`User added with ID: ${results.rows[0].id}`)
+      response.status(201).send(`Employee added with ID: ${results.rows[0].id}`)
     })
   }

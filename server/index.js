@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Employee Management System' })
 })
 
+// employee routes
+app.use('/api', require('./routes/employee_route.js'));
+
+
 // listening to the port
 app.listen(port, () => {
     console.log(`App running on port http://localhost:${port}`)

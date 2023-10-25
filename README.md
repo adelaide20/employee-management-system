@@ -2,7 +2,7 @@
 RESTful API with Node.js, Express, and PostgreSQL
 
 ### STARTING THE SERVER
-npm run server
+npm run app
 
 ### CONNECTING TO THE LOCAL DATABASE
 # 1. Open up the Terminal and install postgresql with brew:1.1 brew install postgresql
