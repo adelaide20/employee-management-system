@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const bodyParser = require('body-parser')
 
 const app = express()
@@ -13,6 +14,9 @@ app.use(
 )
 
 
+// importing db configuration
+require('./config/db.config')
+
 // basic route
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Employee Management System' })
@@ -20,5 +24,5 @@ app.get('/', (req, res) => {
 
 // listening to the port
 app.listen(port, () => {
-    console.log(`App running on port http://localhost:${port}.`)
+    console.log(`App running on port http://localhost:${port}`)
 })
