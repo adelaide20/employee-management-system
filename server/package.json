@@ -4,7 +4,8 @@
   "description": "REST API using Postgresql, Node.js, Express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm i && node index.js",
+    "app": "npm i && nodemon index.js" 
   },
   "keywords": [],
   "author": "",

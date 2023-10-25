@@ -13,3 +13,7 @@ npm run server
 2.2 \c ems
 # 3. Run the script to create tables
 3.1 \i /server/database/ems_db.sql
+
+
+### TO TEST THE ROUTES
+open REST.http file
