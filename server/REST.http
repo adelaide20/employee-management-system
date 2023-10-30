@@ -8,10 +8,12 @@ POST http://localhost:3000/api/new
 content-type: application/json
 
 {
-    "first_name" : "adel",
-    "last_name" : "khosi",
-    "email": "adel@shaper.co.za",
-    "contactNo": "0987654321",
+    "first_name" : "rori",
+    "last_name" : "madisha",
+    "email": "rori@shaper.co.za",
+    "contactNo": "0123456789",
+    "emp_role" : 1,
+    "start_date": "01/Jan/2023",
     "photo": "image.jpg"
 }
 
@@ -24,3 +26,15 @@ GET http://localhost:3000/api/all
 
 ### get one employee
 GET http://localhost:3000/api/one/1
+
+
+
+
+### add employment details
+POST http://localhost:3000/api/details
+content-type: application/json
+
+{
+    "employee" : 1,
+    
+}

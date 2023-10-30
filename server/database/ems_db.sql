@@ -27,20 +27,11 @@ CREATE TABLE  employees  (
    first_name varchar (255),
    last_name varchar (255),
    contactNo varchar (15),
-   photo varchar (255)
-  );
-
-
--- employement details table
-DROP TABLE IF EXISTS employement CASCADE;
-CREATE TABLE  employement  (
-   ment_id SERIAL PRIMARY KEY UNIQUE,
-   employee varchar (255),
-   emp_role varchar (255),
-   emp_status varchar (255),
-   start_date varchar (255),
-   end_date varchar (255),
-   FOREIGN KEY (employee) REFERENCES employee(emp_id),
+   emp_role int,
+   emp_status int DEFAULT 1,
+   start_date date,
+   end_date date,
+   photo varchar (255),
    FOREIGN KEY (emp_role) REFERENCES roles(role_id),
    FOREIGN KEY (emp_status) REFERENCES empStatus(status_id)
 );

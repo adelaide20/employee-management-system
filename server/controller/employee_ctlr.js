@@ -8,11 +8,13 @@ exports.newEmployee = async(request, response) => {
         last_name: request.body.last_name,
         email: request.body.email,
         contactNo: request.body.contactNo,
+        emp_role: request.body.emp_role,
+        start_date: request.body.start_date,
         photo: request.body.photo
     }
 
     // verify that all fields are filled
-    if (!(employee.first_name || employee.last_name || employee.email || employee.contact)) {
+    if (!(employee.first_name || employee.last_name || employee.email || employee.contact || employee.emp_role || employee.start_date)) {
         response.send("All fileds are required");
     }
 
@@ -29,8 +31,8 @@ exports.newEmployee = async(request, response) => {
         }
 
         // add an employee
-        pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, photo) 
-      VALUES ($1, $2, $3, $4, $5) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.photo],
+        pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, emp_role, start_date, photo) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date, employee.photo],
             (error, results) => {
                 if (error) {
                     throw error
@@ -79,12 +81,41 @@ exports.oneEmployee = (request, response) => {
 
 
 // update employee details
-exports.updateEmployee = (request, response) => {
+exports.updateStatus = (request, response) => {
 
+    const emp_id = request.params.emp_id;
+
+    const { emp_status } = request.body;
+
+    try {
+        pool.query(`UPDATE employement
+        SET emp_status = $1
+        WHERE employee = ${emp_id}`, [emp_status],
+            (err, result) => {
+                if (err) {
+                    //If payments are not available is not available
+                    console.error(err);
+                    return res.status(500).json({
+                        error: "Database error",
+                    });
+                } else {
+                    res.status(200).send({ error: "suceesfully updated" });
+                }
+            }
+        );
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: "Database error while creating post!", //Database connection error
+        });
+    }
 }
 
 
 // delete an employee
 exports.deleteEmployee = (request, response) => {
-
-}
+    const employee = {
+        emp_id: request.body.emp_id,
+        emp_status: request.body.emp_status,
+        end_date: request.body.end_date
+    }}
