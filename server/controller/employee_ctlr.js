@@ -63,6 +63,18 @@ exports.allEmployees = (request, response) => {
 // get one employee
 exports.oneEmployee = (request, response) => {
 
+    const emp_id = request.params.emp_id;
+
+    pool.query(
+        `SELECT * FROM employees where emp_id = $1`, [emp_id],
+        (error, results) => {
+            if (error) {
+                return response.status(400).json({
+                    error: "Error while trying to get ann employee",
+                });
+            }
+            response.status(200).json(results.rows)
+        })
 }
 
 
