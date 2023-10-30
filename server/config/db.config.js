@@ -1,11 +1,11 @@
 const Pool = require('pg').Pool
 
 const pool = new Pool({
-  user: 'admin',
-  host: 'localhost',
-  database: 'ems',
-  password: 'password123',
-  port: 5432,
+    user: 'adelaide',
+    host: 'localhost',
+    database: 'ems',
+    password: 'password123',
+    port: 5432,
 })
 
 // testing the connection

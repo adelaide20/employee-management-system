@@ -3,13 +3,19 @@ GET http://localhost:8080
 
 
 
-### basic route
-POST http://localhost:8080/api/new
+### add a new employee
+POST http://localhost:3000/api/new
 content-type: application/json
 
 {
-    "first_name" : "rori",
-    "last_name" : "madisha",
-    "email": "rori@shaper.co.za",
-    "contactNo": "0987654321"
+    "first_name" : "adel",
+    "last_name" : "khosi",
+    "email": "adel@shaper.co.za",
+    "contactNo": "0987654321",
+    "photo": "image.jpg"
 }
+
+
+
+### get all employees
+GET http://localhost:3000/api/all
