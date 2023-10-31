@@ -39,10 +39,10 @@ exports.newEmployee = async(request, response) => {
                 }
                 response.status(201).send('Employee added successfully')
             })
-    } catch (err) {
+    } catch (error) {
         response.status(400).json({
             message: "Failed to add an employee",
-            error: err
+            error: error
         });
     }
 
@@ -53,9 +53,7 @@ exports.newEmployee = async(request, response) => {
 exports.allEmployees = (request, response) => {
     pool.query(`SELECT * FROM employees ORDER BY first_name ASC`, (error, results) => {
         if (error) {
-            return response.status(400).json({
-                error: "Error while trying to get employees",
-            });
+            throw error
         }
         response.status(200).json(results.rows)
     });
@@ -71,9 +69,7 @@ exports.oneEmployee = (request, response) => {
         `SELECT * FROM employees where emp_id = $1`, [emp_id],
         (error, results) => {
             if (error) {
-                return response.status(400).json({
-                    error: "Error while trying to get ann employee",
-                });
+                throw error
             }
             response.status(200).json(results.rows)
         })
@@ -85,28 +81,24 @@ exports.updateStatus = (request, response) => {
 
     const emp_id = request.params.emp_id;
 
-    const { emp_status } = request.body;
+    const { emp_role, emp_status, end_date } = request.body;
 
     try {
-        pool.query(`UPDATE employement
-        SET emp_status = $1
-        WHERE employee = ${emp_id}`, [emp_status],
+        pool.query(`UPDATE employees
+        SET emp_status = $1, emp_status = $2, emp_status = $3
+        WHERE employee = ${emp_id}`, [emp_role, emp_status, end_date],
             (err, result) => {
-                if (err) {
-                    //If payments are not available is not available
-                    console.error(err);
-                    return res.status(500).json({
-                        error: "Database error",
-                    });
-                } else {
-                    res.status(200).send({ error: "suceesfully updated" });
+
+                if (error) {
+                    throw error
                 }
+                response.status(200).send(`User modified with ID: ${id}`)
             }
-        );
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: "Database error while creating post!", //Database connection error
+        )
+    } catch (error) {
+        res.status(400).json({
+            message: "Failed to update an employee",
+            error: error
         });
     }
 }
@@ -114,8 +106,17 @@ exports.updateStatus = (request, response) => {
 
 // delete an employee
 exports.deleteEmployee = (request, response) => {
-    const employee = {
-        emp_id: request.body.emp_id,
-        emp_status: request.body.emp_status,
-        end_date: request.body.end_date
-    }}
+    const emp_id = request.params.emp_id;
+
+    // if end date is null 
+    // set it to the current date
+
+    const id = parseInt(request.params.id)
+
+    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).send(`User deleted with ID: ${id}`)
+    })
+}

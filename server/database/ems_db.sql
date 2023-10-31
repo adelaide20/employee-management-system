@@ -19,7 +19,7 @@ INSERT INTO empStatus(name)
 VALUES ('active'),('dismissed'),('resigned'),('retrenched');
 
 
--- employee personal details table
+-- employee details table
 DROP TABLE IF EXISTS employees CASCADE;
 CREATE TABLE  employees  (
    emp_id SERIAL PRIMARY KEY UNIQUE,
@@ -34,4 +34,14 @@ CREATE TABLE  employees  (
    photo varchar (255),
    FOREIGN KEY (emp_role) REFERENCES roles(role_id),
    FOREIGN KEY (emp_status) REFERENCES empStatus(status_id)
+);
+
+
+-- admin login details table
+DROP TABLE IF EXISTS user CASCADE;
+CREATE TABLE  user  (
+   id SERIAL PRIMARY KEY UNIQUE,
+   email varchar(255),
+   password varchar (255),
+   FOREIGN KEY (email) REFERENCES employees(email)
 );
