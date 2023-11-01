@@ -9,7 +9,12 @@ POST http://localhost:3000/auth/register
 
 ### admin login route
 POST http://localhost:3000/auth/login
+content-type: application/json
 
+{
+    "email": "admin@shaper.co.za",
+    "password": "admin123"
+}
 
 
 ### add a new employee
