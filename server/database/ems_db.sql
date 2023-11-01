@@ -38,10 +38,9 @@ CREATE TABLE  employees  (
 
 
 -- admin login details table
-DROP TABLE IF EXISTS user CASCADE;
-CREATE TABLE  user  (
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE  users  (
    id SERIAL PRIMARY KEY UNIQUE,
    email varchar(255),
-   password varchar (255),
-   FOREIGN KEY (email) REFERENCES employees(email)
+   password varchar (255)
 );

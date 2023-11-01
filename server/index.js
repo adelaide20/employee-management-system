@@ -23,7 +23,10 @@ app.get('/', (req, res) => {
 })
 
 // employee routes
-app.use('/api', require('./routes/employee_route.js'));
+app.use('/api', require('./routes/employee_route'));
+
+// auth routes
+app.use('/auth', require('./routes/auth_route'));
 
 
 // listening to the port

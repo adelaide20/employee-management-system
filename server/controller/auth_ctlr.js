@@ -1,22 +1,29 @@
-const pool = require('server/config/db.config.js');
+const pool = require('../config/db.config');
 const adminData = require('../database/admin_mock');
-const config = require("../../config/auth.config")
+const config = require("../config/auth.config")
+const fs = require('fs')
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
 // registering an admin 
-exports.register = (request, response) => {
-    const data = {
-        email: req.body.email,
-        password: req.body.password
+exports.register = async(request, response) => {
+
+    let admin = {
+        'email': 'admin@shaper.co.za',
+        'password': 'admin123'
     }
 
-    pool.query('INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *', [data.email, data.password], (error, results) => {
+    const salt = await bcrypt.genSalt()
+    password = await bcrypt.hash(admin.password, salt)
+
+
+    pool.query(`INSERT INTO users (email, password) 
+    VALUES ($1, $2) RETURNING *`, [admin.email, password], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`Admin added with ID: ${results.rows[0].id}`)
+        response.status(201).send(`Admin added succesfuly`)
     })
 }
 
@@ -31,7 +38,8 @@ exports.login = async(request, response) => {
 
     // 2. check if the user exists
     const user = await pool.query(
-        `SELECT * FROM users WHERE email = $1`, [data.email]
+        `
+                SELECT * FROM users WHERE email = $1 `, [data.email]
     );
 
     // 3. if the user doesn't exist then send a response
