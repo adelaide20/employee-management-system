@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
         if (data.message === "Signed in successfully!") {
 
-          this.router.navigate(['list'])
+          this.router.navigate(['dash'])
 
           this.authserv.storeUser(data)
         }
