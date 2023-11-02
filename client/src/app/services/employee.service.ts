@@ -9,12 +9,19 @@ import { Employee } from '../interfaces/employee';
 export class EmployeeService {
 
   employees: Employee[] = []
-  
+
   constructor(private http: HttpClient) { }
 
   // returns list of all employees
-  getAllEmployees(){
+  getAllEmployees() {
     return this.http.get(`${environment.apiurl}` + '/api/all');
   }
+
+  // get employee by id
+  getEmployeeById(emp_id: any) {
+    return this.http.get(`${environment.apiurl}` + '/api/one/' + emp_id)
+  }
+
+
 
 }

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './pages/list/list.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { OptionsComponent } from './components/options/options.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CreateComponent,
     ListComponent,
     EmployeeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
