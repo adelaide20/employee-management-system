@@ -34,12 +34,13 @@ export class LoginComponent implements OnInit {
 
       this.authserv.login(user).subscribe((data: any) => {
 
-        sessionStorage.setItem("User", JSON.stringify(data));
+        if (data.message === "Signed in successfully!") {
 
-        alert("login successful")
+          this.router.navigate(['list'])
 
-        this.router.navigate(['list'])
-
+          this.authserv.storeUser(data)
+        }
+        alert(data.message)
       })
 
 

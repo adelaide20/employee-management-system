@@ -6,6 +6,17 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
+var cors = require('cors')
+
+
+var corsOptions = {
+    origin: '*',
+    allowCredentials: "true",
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
+
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({

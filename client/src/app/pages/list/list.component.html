@@ -1,0 +1,29 @@
+<div class="row mt-5">
+    <table class="table table-hover table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">contact No.</th>
+                <th scope="col">Position</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of employees; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{e.first_name| titlecase}} {{e.last_name| titlecase}}</td>
+                <td>{{e.email}}</td>
+                <td>{{e.contactNo}}</td>
+                <td>{{e.emp_role}}</td>
+                <td>{{e.emp_status}}</td>
+                <td>
+                    <button type="submit">edit</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

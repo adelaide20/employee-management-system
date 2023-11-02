@@ -17,3 +17,8 @@ npm run app
 
 ### TO TEST THE ROUTES
 open REST.http file
+
+
+### ADMIN LOGIN DETAILS
+email: admin@shaper.co.za,
+password: admin123
