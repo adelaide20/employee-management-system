@@ -26,4 +26,8 @@ export class AuthService {
     }
     return this.userInfo
    }
+
+   logout(){
+    localStorage.clear();
+   }
 }
