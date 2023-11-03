@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
 
           this.authserv.storeUser(data)
         }
-        alert(data.message)
+        alert(data.error.error)
+        console.log(data);
+        
       })
 
 
