@@ -1,32 +1,82 @@
-<!-- <div class="row">
-    <div class="col-md-6 text-center">
-        <img [src]="employee?.imageUrl" class="img-thumbnail" alt="...">
-    </div>
-    <div class="col-md-6">
-        <div class="display-4 text-primary">{{employee?.name | titlecase}}</div>
-        <div class="text-muted mt-1">Email: <span class="fw-bold">{{employee?.email}}</span></div>
-        <div class="text-muted mt-1">Position: <span class="fw-bold">{{employee?.position | titlecase}}</span></div>
-        <div class="text-muted mt-1">Gender: <span class="fw-bold">{{employee?.gender | titlecase}}</span></div>
-        <div class="text-muted mt-1">Age: <span class="fw-bold">{{year - birthYear}} years old</span></div>
-        <div class="text-muted mt-1">Year Joined: <span class="fw-bold">{{employee?.joinedDate}}</span></div>
+<app-header>
+</app-header>
+
+<div class="container m-8">
+    <div class="flex flex-row ">
+        <div class="basis-1/4">
+            <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img src=".././../../assets/user.png" />
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="basis-1/4">02</div>
+        <div class="basis-1/2">03</div>
     </div>
 
-    <div class="mt-5 text-center">
-        <app-action></app-action>
-    </div>
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
 
-</div> -->
+            <div class="border border-black rounded p-3 mt-3">
+                <h2 class="card-title">Personal Information</h2>
 
-<div class="flex flex-row">
-    <div class="basis-1/4">
-        <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img src=".././../../assets/user.png" />
+
+                <div class="overflow-x-auto mt-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>Cy Ganderton</td>
+                                <td>Quality Control Specialist</td>
+                                <td>Blue</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </label>
+
+            </div>
+
+            <div class="border border-black rounded mt-3 p-3">
+                <h2 class="card-title">Employment Details</h2>
+
+                <div class="overflow-x-auto mt-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Employment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>Cy Ganderton</td>
+                                <td>Quality Control Specialist</td>
+                                <td>Blue</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="border border-black rounded mt-3 p-3">
+                <h2 class="card-title mb-8">Actions</h2>
+                <app-options></app-options>
+            </div>
+
         </div>
     </div>
-    <div class="basis-1/4">02</div>
-    <div class="basis-1/2">03</div>
 </div>
