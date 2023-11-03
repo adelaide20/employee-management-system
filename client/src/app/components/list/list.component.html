@@ -1,29 +1,41 @@
-<div class="row mt-5">
-    <table class="table table-hover table-striped table-bordered text-center">
+<div class="overflow-x-auto ">
+    <table class="table m-20">
+        <!-- head -->
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">contact No.</th>
-                <th scope="col">Position</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
+                <th></th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Status</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
+            <!-- row 1 -->
             <tr *ngFor="let e of employees; let i = index">
-                <th scope="row">{{i + 1}}</th>
-                <td>{{e.first_name| titlecase}} {{e.last_name| titlecase}}</td>
-                <td>{{e.email}}</td>
-                <td>{{e.contactNo}}</td>
-                <td>{{e.emp_role}}</td>
-                <td>{{e.emp_status}}</td>
+                <td>{{i + 1}}</td>
                 <td>
-                    <app-options [emp_id]="e.emp_id"></app-options>
+                    <div class="flex items-center space-x-3">
+                        <div class="avatar">
+                            <div class="mask mask-squircle w-12 h-12">
+                                <img src="../../../assets/user.png" alt="employee photo" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold">{{e.first_name| titlecase}} {{e.last_name| titlecase}}</div>
+                            <div class="text-sm opacity-50">{{e.email}}</div>
+                        </div>
+                    </div>
                 </td>
+                <td>
+                    {{e.emp_role}}
+                </td>
+                <td>{{e.emp_status}}</td>
+                <th>
+                    <button class="btn btn-ghost btn-xs">details</button>
+                </th>
             </tr>
 
-        </tbody>
+
     </table>
 </div>
