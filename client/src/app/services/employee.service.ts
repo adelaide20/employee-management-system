@@ -22,6 +22,16 @@ export class EmployeeService {
     return this.http.get(`${environment.apiurl}` + '/api/one/' + emp_id)
   }
 
+  //add employee 
+  addEmployee(employee: Employee) {
+    return this.http.post(`${environment.apiurl}` + '/api/new', employee);
+  }
+
+  // delete employee
+  deleteEmployee(emp_id: any) {
+    return this.http.get(`${environment.apiurl}` + '/api/remove/' + emp_id)
+  }
+
 
 
 }
