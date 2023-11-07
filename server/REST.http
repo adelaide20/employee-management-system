@@ -27,8 +27,7 @@ content-type: application/json
     "email": "rori@shaper.co.za",
     "contactNo": "0123456789",
     "emp_role" : 1,
-    "start_date": "01/Jan/2023",
-    "photo": "image.jpg"
+    "start_date": "01/Jan/2023"
 }
 
 

@@ -8,5 +8,4 @@ export interface Employee {
     emp_status?: number
     start_date: string;
     end_date?: string;
-    photo: string;
 }

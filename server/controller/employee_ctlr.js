@@ -8,9 +8,8 @@ exports.newEmployee = async(request, response) => {
         last_name: request.body.last_name,
         email: request.body.email,
         contactNo: request.body.contactNo,
-        emp_role: request.body.emp_role,
-        start_date: request.body.start_date,
-        photo: request.body.photo
+        emp_role: parseInt(request.body.emp_role),
+        start_date: request.body.start_date
     }
 
     // verify that all fields are filled
@@ -31,8 +30,8 @@ exports.newEmployee = async(request, response) => {
         }
 
         // add an employee
-        pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, emp_role, start_date, photo) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date, employee.photo],
+        pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, emp_role, start_date) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date],
             (error, results) => {
                 if (error) {
                     throw error

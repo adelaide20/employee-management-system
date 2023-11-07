@@ -6,7 +6,7 @@ CREATE TABLE  roles (
 );
 
 INSERT INTO roles(name)
-VALUES ('admin'),('management'),('technical coordinator'),('senior team leader'),('junior team leader');
+VALUES ('admin'),('HR'),('developer');
 
 -- User type table
 DROP TABLE IF EXISTS empStatus CASCADE;
@@ -31,7 +31,6 @@ CREATE TABLE  employees  (
    emp_status int DEFAULT 1,
    start_date date,
    end_date date,
-   photo varchar (255),
    FOREIGN KEY (emp_role) REFERENCES roles(role_id),
    FOREIGN KEY (emp_status) REFERENCES empStatus(status_id)
 );

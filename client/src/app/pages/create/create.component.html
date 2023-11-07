@@ -16,29 +16,30 @@
 
                 <!-- email -->
                 <div class="basis-1/2">
-                    <input type="email" placeholder="last name" formControlName="email" class="input input-bordered w-full" required />
+                    <input type="email" placeholder="Email Address" formControlName="email" class="input input-bordered w-full" required />
                 </div>
 
                 <!-- contact no. -->
                 <div class="basis-1/2">
-                    <input type="number" placeholder="last name" formControlName="contactNo" class="input input-bordered w-full" required />
+                    <input type="number" placeholder="Contact Number" formControlName="contactNo" class="input input-bordered w-full" required />
+
                 </div>
 
                 <!-- role -->
-                <select class="select select-bordered w-full max-w-xs" formControlName="emp_role">
+                <select class="select select-bordered w-full pl-2" formControlName="emp_role" required>
                     <option disabled selected>Choose a position</option>
                     <option value="1">Admin</option>
-                    <option value="2">Management</option>
-                    <option value="3">Team leader</option>
+                    <option value="2">HR</option>
+                    <option value="3">Developer</option>
                   </select>
 
                 <!-- start date -->
                 <div class="basis-1/2">
-                    <input type="text" placeholder="last name" formControlName="lastName" class="input input-bordered w-full" required />
+                    <input type="date" placeholder="start date" formControlName="start_date" class="input input-bordered w-full" required />
                 </div>
 
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Done</button>
+                    <button type="submit" [disabled]="!newEmpForm.valid" class="btn btn-primary">Done</button>
                 </div>
             </form>
         </div>
