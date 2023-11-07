@@ -31,6 +31,7 @@ CREATE TABLE  employees  (
    emp_status int DEFAULT 1,
    start_date date,
    end_date date,
+   removed BOOLEAN DEFAULT false,
    FOREIGN KEY (emp_role) REFERENCES roles(role_id),
    FOREIGN KEY (emp_status) REFERENCES empStatus(status_id)
 );

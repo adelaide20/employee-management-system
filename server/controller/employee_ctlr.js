@@ -75,28 +75,33 @@ exports.oneEmployee = (request, response) => {
 }
 
 
-// update employee details
-exports.updateStatus = (request, response) => {
+// update/edit employee details
+exports.updateEmployee = (request, response) => {
 
     const emp_id = request.params.emp_id;
 
-    const { emp_role, emp_status, end_date } = request.body;
+    const details = {
+        email: request.body.email,
+        contactno: request.body.contactno,
+        emp_role: parseInt(request.body.emp_role),
+        emp_status: parseInt(request.body.emp_status),
+        end_date: request.body.end_date
+    }
 
     try {
         pool.query(`UPDATE employees
-        SET emp_status = $1, emp_status = $2, emp_status = $3
-        WHERE employee = ${emp_id}`, [emp_role, emp_status, end_date],
-            (err, result) => {
-
+        SET email = $1, contactno = $2, emp_role = $3, emp_status = $4, end_date = $5
+        WHERE emp_id = ${emp_id}`, [details.email, details.contactno, details.emp_role, details.emp_status, details.end_date],
+            (error, results) => {
                 if (error) {
-                    throw error
+                    throw error;
                 }
-                response.status(200).send(`User modified with ID: ${id}`)
+                response.status(200).json(results.rows);
             }
-        )
+        );
     } catch (error) {
-        res.status(400).json({
-            message: "Failed to update an employee",
+        response.status(400).json({
+            message: "Failed to modify employee details",
             error: error
         });
     }
@@ -107,6 +112,8 @@ exports.updateStatus = (request, response) => {
 exports.deleteEmployee = (request, response) => {
     const emp_id = request.params.emp_id;
 
+    var datetime = new Date();
+    console.log(datetime);
     // if end date is null 
     // set it to the current date
 
