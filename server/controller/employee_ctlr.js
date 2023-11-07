@@ -7,13 +7,13 @@ exports.newEmployee = async(request, response) => {
         first_name: request.body.first_name,
         last_name: request.body.last_name,
         email: request.body.email,
-        contactNo: request.body.contactNo,
+        contactno: request.body.contactno,
         emp_role: parseInt(request.body.emp_role),
         start_date: request.body.start_date
     }
 
     // verify that all fields are filled
-    if (!(employee.first_name || employee.last_name || employee.email || employee.contact || employee.emp_role || employee.start_date)) {
+    if (!(employee.first_name || employee.last_name || employee.email || employee.contactno || employee.emp_role || employee.start_date)) {
         response.send("All fileds are required");
     }
 
@@ -30,8 +30,8 @@ exports.newEmployee = async(request, response) => {
         }
 
         // add an employee
-        pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, emp_role, start_date) 
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date],
+        pool.query(`INSERT INTO employees (first_name, last_name, email, contactno, emp_role, start_date) 
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactno, employee.emp_role, employee.start_date],
             (error, results) => {
                 if (error) {
                     throw error

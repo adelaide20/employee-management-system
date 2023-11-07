@@ -25,7 +25,7 @@ content-type: application/json
     "first_name" : "rori",
     "last_name" : "madisha",
     "email": "rori@shaper.co.za",
-    "contactNo": "0123456789",
+    "contactno": "0123456789",
     "emp_role" : 1,
     "start_date": "01/Jan/2023"
 }

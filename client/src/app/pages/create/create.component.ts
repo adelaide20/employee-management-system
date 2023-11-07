@@ -13,7 +13,7 @@ export class CreateComponent implements OnInit {
     first_name: new FormControl('', [Validators.required]),
     last_name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    contactNo: new FormControl('', [Validators.required]),
+    contactno: new FormControl('', [Validators.required]),
     emp_role: new FormControl('', [Validators.required]),
     start_date: new FormControl('', [Validators.required])
   });
@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
       first_name: this.newEmpForm.value.first_name,
       last_name: this.newEmpForm.value.last_name,
       email: this.newEmpForm.value.email,
-      contactNo: this.newEmpForm.value.contactNo,
+      contactno: this.newEmpForm.value.contactno,
       emp_role: this.newEmpForm.value.emp_role,
       start_date: this.newEmpForm.value.start_date
     }

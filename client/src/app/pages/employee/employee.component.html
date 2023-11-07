@@ -35,10 +35,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Blue</td>
+                                <td>{{employee?.first_name | titlecase}}</td>
+                                <td>{{employee?.last_name | titlecase}}</td>
+                                <td>{{employee?.email}}</td>
+                                <td>{{employee?.contactno}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -61,10 +61,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Blue</td>
+                                <th>{{employee?.emp_role}}</th>
+                                <td>{{employee?.start_date}}</td>
+                                <td>{{employee?.end_date | date}}</td>
+                                <td>{{employee?.emp_status}}</td>
                             </tr>
                         </tbody>
                     </table>

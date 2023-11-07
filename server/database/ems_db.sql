@@ -26,7 +26,7 @@ CREATE TABLE  employees  (
    email varchar(255) UNIQUE,
    first_name varchar (255),
    last_name varchar (255),
-   contactNo varchar (15),
+   contactno varchar (15),
    emp_role int,
    emp_status int DEFAULT 1,
    start_date date,

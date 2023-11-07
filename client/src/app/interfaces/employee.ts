@@ -3,7 +3,7 @@ export interface Employee {
     email: string;
     first_name: string;
     last_name: string;
-    contactNo: string;
+    contactno: string;
     emp_role: number;
     emp_status?: number
     start_date: string;

@@ -26,9 +26,8 @@ export class OptionsComponent implements OnInit {
     console.log(this.emp_id);
   }
 
-  // deleteEmp() {
-  //  this.empServ.deleteEmployee(this.employeeId)
-  //  this.router.navigate(['/'])
-  // }
+  deleteEmp() {
+ alert("are you sure you want to remove the employee from the system?")
+  }
 
 }
