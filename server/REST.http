@@ -22,11 +22,11 @@ POST http://localhost:3000/api/new
 content-type: application/json
 
 {
-    "first_name" : "adel",
-    "last_name" : "khosi",
-    "email": "adel@shaper.co.za",
-    "contactno": "0987654321",
-    "emp_role" : 2,
+    "first_name" : "rori",
+    "last_name" : "madisha",
+    "email": "rori@shaper.co.za",
+    "contactno": "0123456789",
+    "position" : 2,
     "start_date": "01/Jan/2023"
 }
 
@@ -38,8 +38,7 @@ GET http://localhost:3000/api/all
 
 
 ### get one employee
-GET http://localhost:3000/api/one/1
-
+GET http://localhost:3000/api/one/2
 
 
 
@@ -48,10 +47,15 @@ PUT http://localhost:3000/api/edit/2
 content-type: application/json
 
 {
-    "email": "adel@shaper.co.za",
+    "email": "adelza@shaper.co.za",
     "contactno": "0600817701",
-    "emp_role" : "3",
+    "position" : "2",
     "emp_status": "1"
 }
+
+
+
+### delete employee
+PUT http://localhost:3000/api/remove/3
 
 

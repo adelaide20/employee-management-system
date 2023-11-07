@@ -50,7 +50,11 @@ exports.newEmployee = async(request, response) => {
 
 // get all employees
 exports.allEmployees = (request, response) => {
-    pool.query(`SELECT * FROM employees ORDER BY first_name ASC`, (error, results) => {
+    pool.query(`SELECT e.emp_id, e.email, e.first_name, e.last_name, e.contactno, r.position, es.status, e.start_date, e.end_date
+    FROM employees as e, roles as r, empStatus as es
+    WHERE e.emp_role = r.role_id 
+    AND e.emp_status = es.status_id
+    ORDER BY e.first_name ASC;`, (error, results) => {
         if (error) {
             throw error
         }
@@ -64,8 +68,11 @@ exports.oneEmployee = (request, response) => {
 
     const emp_id = request.params.emp_id;
 
-    pool.query(
-        `SELECT * FROM employees where emp_id = $1`, [emp_id],
+    pool.query(`SELECT e.emp_id, e.email, e.first_name, e.last_name, e.contactno, r.position, es.status, e.start_date, e.end_date
+        FROM employees as e, roles as r, empStatus as es
+        WHERE e.emp_role = r.role_id 
+        AND e.emp_status = es.status_id
+        AND e.emp_id = $1`, [emp_id],
         (error, results) => {
             if (error) {
                 throw error
@@ -96,7 +103,7 @@ exports.updateEmployee = (request, response) => {
                 if (error) {
                     throw error;
                 }
-                response.status(200).json(results.rows);
+                response.status(200).json("Employee modified");
             }
         );
     } catch (error) {
@@ -114,15 +121,24 @@ exports.deleteEmployee = (request, response) => {
 
     var datetime = new Date();
     console.log(datetime);
-    // if end date is null 
-    // set it to the current date
 
-    const id = parseInt(request.params.id)
+    let removed = true;
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).send(`User deleted with ID: ${id}`)
-    })
+    try {
+        pool.query(`UPDATE employees
+        SET removed = ${removed}, end_date = ${datetime}
+        WHERE emp_id = ${emp_id}`,
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                response.status(200).json("Employee removed");
+            }
+        );
+    } catch (error) {
+        response.status(400).json({
+            message: "Failed to remove employee",
+            error: error
+        });
+    }
 }

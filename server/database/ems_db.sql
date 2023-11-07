@@ -2,20 +2,20 @@
 DROP TABLE IF EXISTS roles CASCADE;
 CREATE TABLE  roles (
    role_id SERIAL PRIMARY KEY UNIQUE,
-   name varchar (255)
+   position varchar (255)
 );
 
-INSERT INTO roles(name)
+INSERT INTO roles(position)
 VALUES ('admin'),('HR'),('developer');
 
 -- User type table
 DROP TABLE IF EXISTS empStatus CASCADE;
 CREATE TABLE  empStatus (
    status_id SERIAL PRIMARY KEY UNIQUE,
-   name varchar (255)
+   status varchar (255)
 );
 
-INSERT INTO empStatus(name)
+INSERT INTO empStatus(status)
 VALUES ('active'),('dismissed'),('resigned'),('retrenched');
 
 
@@ -27,12 +27,12 @@ CREATE TABLE  employees  (
    first_name varchar (255),
    last_name varchar (255),
    contactno varchar (15),
-   emp_role int,
+   position int,
    emp_status int DEFAULT 1,
    start_date date,
    end_date date,
    removed BOOLEAN DEFAULT false,
-   FOREIGN KEY (emp_role) REFERENCES roles(role_id),
+   FOREIGN KEY (position) REFERENCES roles(role_id),
    FOREIGN KEY (emp_status) REFERENCES empStatus(status_id)
 );
 
@@ -44,3 +44,4 @@ CREATE TABLE  users  (
    email varchar(255),
    password varchar (255)
 );
+

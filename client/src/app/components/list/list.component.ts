@@ -18,6 +18,8 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.employeeServ.getAllEmployees().subscribe((data:any)=>{
       this.employees = data
+      console.log(data);
+      
     })
   }
 
