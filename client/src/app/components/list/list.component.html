@@ -1,11 +1,11 @@
-<div class="overflow-x-auto ">
-    <table class="table m-20">
+<div class="w-4/5">
+    <table class="table">
         <!-- head -->
         <thead>
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Job</th>
+                <th>Job Title</th>
                 <th>Status</th>
                 <th></th>
             </tr>
@@ -16,15 +16,8 @@
                 <td>{{i + 1}}</td>
                 <td>
                     <div class="flex items-center space-x-3">
-                        <div class="avatar">
-                            <div class="mask mask-squircle w-12 h-12">
-                                <img src="../../../assets/user.png" alt="employee photo" />
-                            </div>
-                        </div>
-                        <div>
-                            <div class="font-bold">{{e.first_name| titlecase}} {{e.last_name| titlecase}}</div>
-                            <div class="text-sm opacity-50">{{e.email}}</div>
-                        </div>
+                        <div class="font-bold">{{e.first_name| titlecase}} {{e.last_name| titlecase}}</div>
+                        <div class="text-sm opacity-50">{{e.email}}</div>
                     </div>
                 </td>
                 <td>
@@ -32,10 +25,9 @@
                 </td>
                 <td>{{e.emp_status}}</td>
                 <th>
-                    <button class="btn btn-ghost btn-xs" (click)="viewEmp()">details</button>
+                    <button class="btn btn-ghost btn-xs" (click)="viewEmp(e.emp_id)">details</button>
                 </th>
             </tr>
-
 
     </table>
 </div>

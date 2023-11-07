@@ -31,7 +31,7 @@ exports.newEmployee = async(request, response) => {
 
         // add an employee
         pool.query(`INSERT INTO employees (first_name, last_name, email, contactNo, emp_role, start_date) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date],
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactNo, employee.emp_role, employee.start_date],
             (error, results) => {
                 if (error) {
                     throw error

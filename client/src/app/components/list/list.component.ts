@@ -21,9 +21,10 @@ export class ListComponent implements OnInit {
     })
   }
 
-  viewEmp() {
-    let url = 'details/' + this.emp_id
+  viewEmp(emp_id:any) {
+    let url = 'details/' + emp_id
     this.router.navigate([url])
   }
+
 
 }
