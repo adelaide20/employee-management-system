@@ -1,3 +1,53 @@
-<button class="btn btn-warning btn-xs" (click)="editEmp()">edit</button>
+<button class="btn btn-warning btn-xs" onclick="my_modal_4.showModal()">edit</button>
 
 <button class="btn btn-error btn-xs" (click)="deleteEmp()">delete</button>
+
+
+<dialog id="my_modal_4" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+
+        <h2 class="font-bold text-lg">Update employee details</h2>
+
+        <form [formGroup]="detailsForm" (ngSubmit)="editEmp()" method="dialog">
+            <div class="flex flex-row gap-y-px my-4">
+                <!-- email -->
+                <div class="basis-1/2 mr-2">
+                    <input type="text" placeholder="first name" formControlName="email" class="input input-bordered w-full" required />
+                </div>
+                <!-- contact no. -->
+                <div class="basis-1/2 ml-2">
+                    <input type="text" placeholder="last name" formControlName="contactno" class="input input-bordered w-full" required />
+                </div>
+            </div>
+
+            <div class="flex flex-row gap-y-px my-4">
+                <!-- position -->
+                <div class="basis-1/2 mr-2">
+                    <select class="select select-bordered w-full pl-2" formControlName="position" required>
+                        <option disabled selected>Choose a position</option>
+                        <option value="1">Admin</option>
+                        <option value="2">HR</option>
+                        <option value="3">Developer</option>
+                    </select>
+                </div>
+                <!-- status -->
+                <div class="basis-1/2 ml-2">
+                    <select class="select select-bordered w-full pl-2" formControlName="status" required>
+                        <option disabled selected>Choose the employment status</option>
+                        <option value="1">Active</option>
+                        <option value="2">Dismissed</option>
+                        <option value="3">Resigned</option>
+                        <option value="4">retrenched</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <button class="btn btn-primary">Save</button>
+        </form>
+
+    </div>
+</dialog>

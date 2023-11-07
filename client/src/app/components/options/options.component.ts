@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -11,6 +12,11 @@ export class OptionsComponent implements OnInit {
 
   @Input() emp_id: any = '';
 
+  detailsForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+  
   constructor(private empServ:EmployeeService, private router:Router) { }
 
   ngOnInit(): void {
