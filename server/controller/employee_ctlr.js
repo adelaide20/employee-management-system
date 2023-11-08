@@ -8,12 +8,12 @@ exports.newEmployee = async(request, response) => {
         last_name: request.body.last_name,
         email: request.body.email,
         contactno: request.body.contactno,
-        emp_role: parseInt(request.body.emp_role),
+        position: parseInt(request.body.position),
         start_date: request.body.start_date
     }
 
     // verify that all fields are filled
-    if (!(employee.first_name || employee.last_name || employee.email || employee.contactno || employee.emp_role || employee.start_date)) {
+    if (!(employee.first_name || employee.last_name || employee.email || employee.contactno || employee.position || employee.start_date)) {
         response.send("All fileds are required");
     }
 
@@ -30,8 +30,8 @@ exports.newEmployee = async(request, response) => {
         }
 
         // add an employee
-        pool.query(`INSERT INTO employees (first_name, last_name, email, contactno, emp_role, start_date) 
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactno, employee.emp_role, employee.start_date],
+        pool.query(`INSERT INTO employees (first_name, last_name, email, contactno, position, start_date) 
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [employee.first_name, employee.last_name, employee.email, employee.contactno, employee.position, employee.start_date],
             (error, results) => {
                 if (error) {
                     throw error
@@ -50,10 +50,11 @@ exports.newEmployee = async(request, response) => {
 
 // get all employees
 exports.allEmployees = (request, response) => {
-    pool.query(`SELECT e.emp_id, e.email, e.first_name, e.last_name, e.contactno, r.position, es.status, e.start_date, e.end_date
+    pool.query(`SELECT e.emp_id, e.email, e.first_name, e.last_name, e.contactno, r.position, es.status, e.start_date, e.end_date, e.removed
     FROM employees as e, roles as r, empStatus as es
-    WHERE e.emp_role = r.role_id 
+    WHERE e.position = r.role_id 
     AND e.emp_status = es.status_id
+    AND e.removed = 'false'
     ORDER BY e.first_name ASC;`, (error, results) => {
         if (error) {
             throw error
@@ -70,7 +71,7 @@ exports.oneEmployee = (request, response) => {
 
     pool.query(`SELECT e.emp_id, e.email, e.first_name, e.last_name, e.contactno, r.position, es.status, e.start_date, e.end_date
         FROM employees as e, roles as r, empStatus as es
-        WHERE e.emp_role = r.role_id 
+        WHERE e.position = r.role_id 
         AND e.emp_status = es.status_id
         AND e.emp_id = $1`, [emp_id],
         (error, results) => {
@@ -90,15 +91,15 @@ exports.updateEmployee = (request, response) => {
     const details = {
         email: request.body.email,
         contactno: request.body.contactno,
-        emp_role: parseInt(request.body.emp_role),
+        position: parseInt(request.body.position),
         emp_status: parseInt(request.body.emp_status),
         end_date: request.body.end_date
     }
 
     try {
         pool.query(`UPDATE employees
-        SET email = $1, contactno = $2, emp_role = $3, emp_status = $4, end_date = $5
-        WHERE emp_id = ${emp_id}`, [details.email, details.contactno, details.emp_role, details.emp_status, details.end_date],
+        SET email = $1, contactno = $2, position = $3, emp_status = $4, end_date = $5
+        WHERE emp_id = ${emp_id}`, [details.email, details.contactno, details.position, details.emp_status, details.end_date],
             (error, results) => {
                 if (error) {
                     throw error;
@@ -119,14 +120,11 @@ exports.updateEmployee = (request, response) => {
 exports.deleteEmployee = (request, response) => {
     const emp_id = request.params.emp_id;
 
-    var datetime = new Date();
-    console.log(datetime);
-
     let removed = true;
 
     try {
         pool.query(`UPDATE employees
-        SET removed = ${removed}, end_date = ${datetime}
+        SET removed = ${removed}
         WHERE emp_id = ${emp_id}`,
             (error, results) => {
                 if (error) {

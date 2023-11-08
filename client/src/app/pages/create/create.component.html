@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
     <div class="card w-full lg:w-6/12 bg-base-100 shadow-xl">
         <div class="card-body">
@@ -21,7 +22,7 @@
 
                 <!-- contact no. -->
                 <div class="basis-1/2">
-                    <input type="number" placeholder="Contact Number" formControlName="contactNo" class="input input-bordered w-full" required />
+                    <input type="number" pattern=".{9,10}" placeholder="Contact Number" formControlName="contactno" class="input input-bordered w-full" required />
 
                 </div>
 
@@ -41,7 +42,7 @@
                 <div class="card-actions justify-end">
                     <button type="submit" routerLink="/dash" class="btn btn-primary">Cancel</button>
 
-                    <button type="submit" [disabled]="!newEmpForm.valid" class="btn btn-primary">Done</button>
+                    <button type="submit" class="btn btn-primary">Done</button>
                 </div>
 
             </form>

@@ -27,9 +27,14 @@ export class EmployeeService {
     return this.http.post(`${environment.apiurl}` + '/api/new', employee);
   }
 
+  //edit employee 
+  editEmployee(emp_id: any, employee: any) {
+    return this.http.put(`${environment.apiurl}` + '/api/edit/' + emp_id, employee);
+  }
+
   // delete employee
-  deleteEmployee(emp_id: any) {
-    return this.http.get(`${environment.apiurl}` + '/api/remove/' + emp_id)
+  deleteEmployee(emp_id: any, removed:any) {
+    return this.http.put(`${environment.apiurl}` + '/api/remove/' + emp_id, removed)
   }
 
 

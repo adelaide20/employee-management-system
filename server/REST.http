@@ -12,7 +12,7 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "email": "admin@shaper.co.za",
+    "email": "admin@ems.co.za",
     "password": "admin123"
 }
 
@@ -22,11 +22,11 @@ POST http://localhost:3000/api/new
 content-type: application/json
 
 {
-    "first_name" : "rori",
-    "last_name" : "madisha",
-    "email": "rori@shaper.co.za",
+    "first_name" : "test",
+    "last_name" : "tester",
+    "email": "test@ems.co.za",
     "contactno": "0123456789",
-    "position" : 2,
+    "position" : 1,
     "start_date": "01/Jan/2023"
 }
 
@@ -43,11 +43,11 @@ GET http://localhost:3000/api/one/2
 
 
 ### edit/update employee details
-PUT http://localhost:3000/api/edit/2
+PUT http://localhost:3000/api/edit/3
 content-type: application/json
 
 {
-    "email": "adelza@shaper.co.za",
+    "email": "adelza@ems.co.za",
     "contactno": "0600817701",
     "position" : "2",
     "emp_status": "1"
@@ -56,6 +56,6 @@ content-type: application/json
 
 
 ### delete employee
-PUT http://localhost:3000/api/remove/3
+PUT http://localhost:3000/api/remove/4
 
 

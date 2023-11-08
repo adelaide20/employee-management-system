@@ -15,11 +15,11 @@
             <div class="flex flex-row gap-y-px my-4">
                 <!-- email -->
                 <div class="basis-1/2 mr-2">
-                    <input type="text" placeholder="first name" formControlName="email" class="input input-bordered w-full" required />
+                    <input type="text" placeholder="{{details.email}}" formControlName="email" class="input input-bordered w-full" required />
                 </div>
                 <!-- contact no. -->
                 <div class="basis-1/2 ml-2">
-                    <input type="text" placeholder="last name" formControlName="contactno" class="input input-bordered w-full" required />
+                    <input type="text" placeholder="{{details.contactno}}" formControlName="contactno" class="input input-bordered w-full" required />
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                 <!-- position -->
                 <div class="basis-1/2 mr-2">
                     <select class="select select-bordered w-full pl-2" formControlName="position" required>
-                        <option disabled selected>Choose a position</option>
+                        <option disabled selected>Current position is {{details.position}}</option>
                         <option value="1">Admin</option>
                         <option value="2">HR</option>
                         <option value="3">Developer</option>
@@ -36,7 +36,7 @@
                 <!-- status -->
                 <div class="basis-1/2 ml-2">
                     <select class="select select-bordered w-full pl-2" formControlName="status" required>
-                        <option disabled selected>Choose the employment status</option>
+                        <option disabled selected>Current status is {{details.status}}</option>
                         <option value="1">Active</option>
                         <option value="2">Dismissed</option>
                         <option value="3">Resigned</option>

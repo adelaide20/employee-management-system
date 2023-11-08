@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 exports.register = async(request, response) => {
 
     const admin = {
-        'email': 'admin@shaper.co.za',
+        'email': 'admin@ems.co.za',
         'password': 'admin123'
     }
 

@@ -63,7 +63,7 @@
                             <tr>
                                 <td>{{employee?.position}}</td>
                                 <td>{{employee?.start_date}}</td>
-                                <td>{{employee?.end_date | date}}</td>
+                                <td>{{employee?.end_date | date : "dd/MM/yyyy" }}</td>
                                 <td>{{employee?.status}}</td>
                             </tr>
                         </tbody>
@@ -74,7 +74,7 @@
 
             <div class="border border-black rounded mt-3 p-3">
                 <h2 class="card-title mb-8">Actions</h2>
-                <app-options></app-options>
+                <app-options [emp_id]="emp_id"></app-options>
             </div>
 
         </div>

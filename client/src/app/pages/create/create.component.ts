@@ -33,18 +33,12 @@ export class CreateComponent implements OnInit {
       contactno: this.newEmpForm.value.contactno,
       position: this.newEmpForm.value.position,
       start_date: this.newEmpForm.value.start_date
-    }
-
-   
-
-    console.log(obj);
-    
+    }    
 
     // if (this.newEmpForm.value === "VALID") {
       this.serv.addEmployee(obj).subscribe(data => {
         console.log(data);
       })
-    //   console.log(this.newEmpForm.errors);
     // }
     // else{
     //   alert("all fields are required, and in a correct format");
