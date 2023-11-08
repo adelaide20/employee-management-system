@@ -36,11 +36,11 @@ export class OptionsComponent implements OnInit {
   editEmp() {
 
     // if the form data is not inserted then use the old data
-    if ((this.detailsForm.value.email || this.detailsForm.value.contactno || this.detailsForm.value.position || this.detailsForm.value.status) === '') {
+    if ((this.detailsForm.value.email === '') || (this.detailsForm.value.contactno === '')) {
       this.detailsForm.value.email = this.details.email,
         this.detailsForm.value.contactno = this.details.contactno
-        // this.detailsForm.value.position = this.details.position,
-        // this.detailsForm.value.status = this.details.status
+      // this.detailsForm.value.position = this.details.position,
+      // this.detailsForm.value.status = this.details.status
     }
 
     // object holding the data from the form
