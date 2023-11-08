@@ -1,7 +1,5 @@
 const pool = require('../config/db.config');
-const adminData = require('../database/admin_mock');
 const config = require("../config/auth.config")
-const fs = require('fs')
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 

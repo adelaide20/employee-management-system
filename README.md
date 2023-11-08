@@ -12,7 +12,7 @@ npm run app
 2.3 CREATE DATABASE ems;
 2.2 \c ems
 # 3. Run the script to create tables
-3.1 \i /server/database/ems_db.sql
+3.1 \i /server/database/ems_db.sql OR copy the db file path
 
 
 ### TO TEST THE ROUTES
@@ -22,3 +22,7 @@ open REST.http file
 ### ADMIN LOGIN DETAILS
 email: admin@shaper.co.za,
 password: admin123
+
+
+### STARTING THE SERVER
+ng serve -o

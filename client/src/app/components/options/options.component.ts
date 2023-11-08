@@ -17,8 +17,8 @@ export class OptionsComponent implements OnInit {
   detailsForm = new FormGroup({
     email: new FormControl(''),
     contactno: new FormControl(''),
-    position: new FormControl(''),
-    status: new FormControl(''),
+    // position: new FormControl(''),
+    // status: new FormControl(''),
   });
 
   constructor(private empServ: EmployeeService, private router: Router) { }
@@ -38,23 +38,23 @@ export class OptionsComponent implements OnInit {
     // if the form data is not inserted then use the old data
     if ((this.detailsForm.value.email || this.detailsForm.value.contactno || this.detailsForm.value.position || this.detailsForm.value.status) === '') {
       this.detailsForm.value.email = this.details.email,
-        this.detailsForm.value.contactno = this.details.contactno,
-        this.detailsForm.value.position = this.details.position,
-        this.detailsForm.value.status = this.details.status
+        this.detailsForm.value.contactno = this.details.contactno
+        // this.detailsForm.value.position = this.details.position,
+        // this.detailsForm.value.status = this.details.status
     }
 
     // object holding the data from the form
     let updatedetails = {
       email: this.detailsForm.value.email,
-      contactno: this.detailsForm.value.contactno,
-      position: this.detailsForm.value.position,
-      status: this.detailsForm.value.status
+      contactno: this.detailsForm.value.contactno
+      // position: this.detailsForm.value.position,
+      // status: this.detailsForm.value.status
     };
 
     // update fucntion
     this.empServ.editEmployee(this.emp_id, updatedetails).subscribe((data: any) => {
       data
-      console.log(data);
+      alert(data);
     })
 
   }

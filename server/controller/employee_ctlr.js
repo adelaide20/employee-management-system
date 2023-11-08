@@ -90,16 +90,13 @@ exports.updateEmployee = (request, response) => {
 
     const details = {
         email: request.body.email,
-        contactno: request.body.contactno,
-        position: parseInt(request.body.position),
-        emp_status: parseInt(request.body.emp_status),
-        end_date: request.body.end_date
+        contactno: request.body.contactno
     }
 
     try {
         pool.query(`UPDATE employees
-        SET email = $1, contactno = $2, position = $3, emp_status = $4, end_date = $5
-        WHERE emp_id = ${emp_id}`, [details.email, details.contactno, details.position, details.emp_status, details.end_date],
+        SET email = $1, contactno = $2
+        WHERE emp_id = ${emp_id}`, [details.email, details.contactno],
             (error, results) => {
                 if (error) {
                     throw error;

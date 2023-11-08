@@ -47,10 +47,8 @@ PUT http://localhost:3000/api/edit/3
 content-type: application/json
 
 {
-    "email": "adelza@ems.co.za",
-    "contactno": "0600817701",
-    "position" : "2",
-    "emp_status": "1"
+    "email": "adel@ems.co.za",
+    "contactno": "0600817701"
 }
 
 
