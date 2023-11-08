@@ -55,7 +55,7 @@ exports.login = async(request, response) => {
                 const token = jwt.sign({
                     id: user.id
                 }, config.secret, {
-                    expiresIn: 86400 //24 hours
+                    expiresIn: 14400 //4 hours
                 });
                 response.status(200).json({
                     message: "Signed in successfully!",
