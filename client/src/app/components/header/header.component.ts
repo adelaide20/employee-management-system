@@ -9,9 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private service: AuthService, private router:Router) { }
+  constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    let user = this.service.getUser()
+    console.log(user);
+    // console.log(user[0]);
+
+
   }
 
   logout() {

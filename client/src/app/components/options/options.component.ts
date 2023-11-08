@@ -27,7 +27,7 @@ export class OptionsComponent implements OnInit {
     this.empServ.getEmployeeById(this.emp_id).subscribe((data: any) => {
       this.details = data[0]
 
-      console.log(this.details);
+      // console.log(this.details);
 
     })
   }
